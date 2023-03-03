@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    password:
+    url: jdbc:mysql://localhost:3306/examen_spring_devops?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+  application:
+    name: examen-spring-devops
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+server:
+  servlet:
+    encoding:
+      charset: utf-8
