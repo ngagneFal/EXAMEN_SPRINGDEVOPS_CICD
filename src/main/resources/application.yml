@@ -1,3 +1,21 @@
+#spring:
+#  datasource:
+#    password:
+#    url: jdbc:mysql://localhost:3306/examen_spring_devops?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+#    username: root
+#  application:
+#    name: examen-spring-devops
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#server:
+#  servlet:
+#    encoding:
+#      charset: utf-8
+
+# Profile mysql (par défaut)
 spring:
   datasource:
     password:
@@ -5,12 +23,25 @@ spring:
     username: root
   application:
     name: examen-spring-devops
-
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-server:
-  servlet:
-    encoding:
-      charset: utf-8
+    properties:
+      dialect: org.hibernate.dialect.MySQL8Dialect
+
+
+# Profile h2 (pour le build CICD)
+---
+spring:
+  profiles: h2
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      dialect: org.hibernate.dialect.H2Dialect
